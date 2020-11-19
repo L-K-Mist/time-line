@@ -3,6 +3,9 @@
 </template>
 
 <script>
+/* eslint-disable no-debugger */
+/* eslint-disable no-unused-vars */
+
 import { defineComponent, onMounted } from "vue";
 import { gsap } from "gsap";
 
@@ -39,10 +42,15 @@ export default defineComponent({
     function moveYearTopLeft() {
       const screenPosition = { x: 30, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
+      const yearBox = document.getElementById("year2020").getBBox()
+      console.log("moveYearTopLeft -> yearBox", yearBox)
+      
       gsap.to("#year2020", {
-        x: svgPosition.x,
-        y: svgPosition.y,
+        x: 262.00577,
+        transformOrigin: "top left",
+        // y: svgPosition.y,
       });
+      debugger;
     }
 
     onMounted(() => {
@@ -76,5 +84,9 @@ svg {
   width: 100vw;
   height: 100vh;
   z-index: 1;
+}
+#year2020 {
+  border: 1px dotted pink;
+  /* transform: translateX(-100%); */
 }
 </style>
