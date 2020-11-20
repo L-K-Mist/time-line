@@ -1,25 +1,32 @@
 <template>
   <TimeLine @click="moveYearTopLeft" />
+  <div class="test-spot"></div>
+  <dev-panel></dev-panel>
 </template>
 
 <script>
 /* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, watchEffect } from "vue";
 import { gsap } from "gsap";
-
+// TODO Next: bring in the useMousePosition compositions to better see what's going on.
 import TimeLine from "@/components/TimeLine";
+import DevPanel from "@/components/DevPanel";
+
+
 export default defineComponent({
   name: "App",
   components: {
     TimeLine,
+    DevPanel
   },
   setup() {
     function viewBoxString(frame) {
       return `${frame.x} ${frame.y} ${frame.width} ${frame.height}`;
     }
     let svg;
+let tl = gsap.timeline(); //create the timeline
     function zoomToView(elementId) {
       const element = document.getElementById(elementId);
       const box = element.getBBox();
@@ -44,17 +51,21 @@ export default defineComponent({
       const svgPosition = screenToSVGPoint(screenPosition, svg);
       const yearBox = document.getElementById("year2020").getBBox()
       console.log("moveYearTopLeft -> yearBox", yearBox)
-      
-      gsap.to("#year2020", {
-        x: 262.00577,
-        transformOrigin: "top left",
-        // y: svgPosition.y,
+      tl.to("#year2020", {
+        attr: { x: svgPosition.x , y: svgPosition.y + yearBox.height * 0.75, fontSize: 12 },
+        // transformOrigin: "center center"
+        // rotate: 180,
+        // scale: 0.6
+      })
+      .to("#year2020", {
+        scale: 0.6
       });
       debugger;
     }
 
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
+
       setTimeout(() => {
         zoomToView("rect968");
       }, 500);
@@ -88,5 +99,13 @@ svg {
 #year2020 {
   border: 1px dotted pink;
   /* transform: translateX(-100%); */
+}
+.test-spot {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: darkblue;
 }
 </style>
