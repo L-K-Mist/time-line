@@ -40,14 +40,18 @@
      inkscape:window-width="1920"
      inkscape:window-height="1055"
      id="namedview212"
-     showgrid="false"
-     inkscape:zoom="0.70799965"
-     inkscape:cx="426.00554"
-     inkscape:cy="534.52473"
+     showgrid="true"
+     inkscape:zoom="1.0012627"
+     inkscape:cx="665.15038"
+     inkscape:cy="320.87622"
      inkscape:window-x="1280"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2" />
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid894" />
+  </sodipodi:namedview>
   <g
      inkscape:groupmode="layer"
      id="layer1"
@@ -207,7 +211,7 @@
     </text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:21.51205635px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61340427"
+       style="font-style:normal;font-weight:normal;font-size:21.51205635px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#242a4c;fill-opacity:1;stroke:none;stroke-width:1.61340427;"
        x="269.00925"
        y="657.25763"
        id="text1029"><tspan
@@ -215,7 +219,7 @@
          id="tspan1027"
          x="269.00925"
          y="657.25763"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.69929695px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0.46778151px;stroke-width:1.61340427">ALEXANDER FORBES</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.69929695px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0.46778151px;stroke-width:1.61340427;fill:#242a4c;">ALEXANDER FORBES</tspan></text>
     <path
        d="M 283.68816,491.46208 V 328.49344 H 98.587979 V 364.70869 H 283.68816"
        stroke-miterlimit="10"
@@ -306,43 +310,13 @@
        inkscape:connector-curvature="0"
        id="path126"
        d="M 501.22313,416.6635 C 501.22313,418.58089 496.15902,420.13412 489.91391,420.13412 483.66879,420.13412 478.60469,418.58089 478.60469,416.6635 478.60469,414.74611 483.66879,413.19287 489.91189,413.19287 496.15902,413.19287 501.22313,414.74611 501.22313,416.6635" />
-    <text
-       style="font-weight:bold;font-size:16.09566879px;font-family:Roboto;-inkscape-font-specification:Roboto-Bold;fill:#242a4c;stroke-width:2.0119586"
-       font-weight="bold"
-       font-size="8"
-       id="text130"
-       x="745.10474"
-       y="371.43671">
-      <tspan
-         x="745.10474 756.74994 770.72095 783.87115 795.71753 812.61798 819.52301 827.14587 840.29608 853.14038 867.09534"
-         y="371.43671"
-         id="tspan128"
-         style="stroke-width:2.0119586">LOREM IPSUM</tspan>
-    </text>
-    <text
-       style="font-style:italic;font-size:14.08370972px;font-family:Roboto;-inkscape-font-specification:Roboto-Italic;fill:#797979;stroke-width:2.0119586"
-       font-style="italic"
-       font-size="7"
-       id="text140"
-       x="731.02179"
-       y="403.13962">
-      <tspan
-         x="731.02179 738.76782 746.7674 751.56995 758.93573 771.24487 774.75171 778.30084 786.30035 793.66614 801.66571 813.97485 817.48169 825.48126 833.48077 837.02991 845.02942 849.97565 853.48248 860.84827 864.39734 869.14355 872.65039 880.39642 892.70563 900.07141 904.81763 907.5921"
-         y="403.13962"
-         id="tspan136"
-         style="stroke-width:2.0119586">Lorem ipsum dolor sit amet,</tspan>
-      <tspan
-         x="731.02179 738.38757 746.38715 754.38666 761.76654 769.13232 776.49811 781.24432 788.61011 793.35632 801.35583 806.30908 809.81592 817.56195 825.56152 829.1106 837.11017 840.65924 848.02502 855.39081 858.93994 866.93945 874.93903 878.45569 885.82147 889.37061 892.91968 897.66589 901.44031"
-         y="420.04007"
-         id="tspan138"
-         style="stroke-width:2.0119586">consectetur adipiscing elit.</tspan>
-    </text>
     <path
-       d="M 722.43797,642.86195 722.29714,346.60107 H 907.39732 V 382.81632 H 722.29714"
+       d="M 722.43797,642.86195 722.29714,346.60107 H 923.39732 V 382.81632 H 722.29714"
        stroke-miterlimit="10"
        id="path142"
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a5409f;stroke-width:4.0239172;stroke-miterlimit:10" />
+       style="fill:none;stroke:#a5409f;stroke-width:4.0239172;stroke-miterlimit:10"
+       sodipodi:nodetypes="ccccc" />
     <text
        style="font-weight:bold;font-size:35.22939301px;font-family:Roboto;-inkscape-font-specification:Roboto-Bold;fill:#a5409f;stroke-width:2.0119586"
        font-weight="bold"
@@ -457,6 +431,31 @@
        id="path204"
        inkscape:connector-curvature="0"
        style="fill:#fcfcfc;stroke-width:2.0119586" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:21.51205635px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#242a4c;fill-opacity:1;stroke:none;stroke-width:1.61340427"
+       x="732.96136"
+       y="371.2652"
+       id="text1029-3"><tspan
+         sodipodi:role="line"
+         id="tspan1027-6"
+         x="732.96136"
+         y="371.2652"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.69929695px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0.46778151px;fill:#242a4c;stroke-width:1.61340427">COPIA DIGITAL UK</tspan></text>
+    <text
+       style="font-style:italic;font-size:15.05840206px;font-family:Roboto;-inkscape-font-specification:Roboto-Italic;display:inline;fill:#797979;stroke-width:2.15120029"
+       font-style="italic"
+       font-size="7"
+       id="text172-7"
+       x="733.0932"
+       y="404.96048">
+      <tspan
+         style="word-spacing:1.49388289px;stroke-width:2.15120029"
+         id="tspan881-5">Editable Charts</tspan>
+      <tspan
+         style="word-spacing:1.49388289px;stroke-width:2.15120029"
+         id="tspan928" />
+    </text>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -478,8 +477,8 @@
     <circle
        style="display:inline;opacity:0.56499999;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="test-point"
-       cx="257.60446"
-       cy="555.65857"
+       cx="255.83893"
+       cy="582.84784"
        r="9.1807957" />
   </g>
 </svg>

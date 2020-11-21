@@ -44,6 +44,9 @@ svgY
 .bottom-panel {
     position: absolute;
     bottom: 0;
-    width: 100vw
+    width: 100vw;
+    font-weight: bold;
+    z-index: 10;
+    background-color: rgba(210, 233, 240, 0.5);
 }
 </style>
