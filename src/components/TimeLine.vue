@@ -40,14 +40,17 @@
      inkscape:window-width="1920"
      inkscape:window-height="1055"
      id="namedview212"
-     showgrid="true"
-     inkscape:zoom="1.0012627"
-     inkscape:cx="665.15038"
-     inkscape:cy="320.87622"
+     showgrid="false"
+     inkscape:zoom="1.8667619"
+     inkscape:cx="358.34886"
+     inkscape:cy="180.08894"
      inkscape:window-x="1280"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1">
+     inkscape:current-layer="layer1"
+     showguides="false"
+     borderlayer="false"
+     inkscape:pagecheckerboard="false">
     <inkscape:grid
        type="xygrid"
        id="grid894" />
@@ -313,7 +316,7 @@
     <path
        d="M 722.43797,642.86195 722.29714,346.60107 H 923.39732 V 382.81632 H 722.29714"
        stroke-miterlimit="10"
-       id="path142"
+       id="flag-two"
        inkscape:connector-curvature="0"
        style="fill:none;stroke:#a5409f;stroke-width:4.0239172;stroke-miterlimit:10"
        sodipodi:nodetypes="ccccc" />
@@ -362,13 +365,6 @@
          style="word-spacing:1.49388289px;stroke-width:2.15120029"
          id="tspan881">My Retirement Picture</tspan>
     </text>
-    <path
-       d="M 477.17598,917.4335 V 631.44916 H 261.15788 V 670.17077 H 477.17598"
-       stroke-miterlimit="10"
-       id="path174"
-       inkscape:connector-curvature="0"
-       style="fill:none;stroke:#f23c8b;stroke-width:4.30240059;stroke-miterlimit:10"
-       sodipodi:nodetypes="ccccc" />
     <text
        style="font-weight:bold;font-size:37.6675148px;font-family:Roboto;-inkscape-font-specification:Roboto-Bold;fill:#f23c8b;stroke-width:2.15120029"
        font-weight="bold"
@@ -376,8 +372,7 @@
        class="year"
        id="year2020"
        x="262.00574"
-       y="618.5188">
-2020
+       y="618.5188">2020
     </text>
     <path
        d="M 94.69484,913.97337 73.092441,877.75811 94.69484,841.54286 H 137.89762 L 159.50002,877.75811 137.89762,913.97337 Z"
@@ -456,6 +451,12 @@
          style="word-spacing:1.49388289px;stroke-width:2.15120029"
          id="tspan928" />
     </text>
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#f23c8b;stroke-width:4.30200005;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 477.17598,670.17077 261.36092,670.171 261.15788,631.44916 477.175,631.449 477.17598,917.4335 Z"
+       id="flag2020"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
   </g>
   <g
      inkscape:groupmode="layer"

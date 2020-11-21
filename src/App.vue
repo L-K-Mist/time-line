@@ -67,9 +67,33 @@ export default defineComponent({
       debugger;
     }
 
+    const aBoxThatNeedsABetterName = {
+      topRightPoint: {
+        x: 477.17598,
+        y: 670.17077
+      },
+      topLeftPoint: {
+        x: 261.158, 
+        y: 670.171
+      },
+      bottomLeftPoint: {
+        x: 261.15788,
+        y: 631.44916
+      },
+      bottomRightPoint: {
+        x: 477.176,
+        y: 631.449
+      }
+    }
+
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
-
+    gsap.set("#flag2020", {
+      attr: {
+        // Conceptually deconstructed this path according to what each point means in terms of the goal:  Morphing to the edge of the screen.
+        d: `M ${aBoxThatNeedsABetterName.topRightPoint.x},${aBoxThatNeedsABetterName.topRightPoint.y} ${aBoxThatNeedsABetterName.topLeftPoint.x},${aBoxThatNeedsABetterName.topLeftPoint.y} ${aBoxThatNeedsABetterName.bottomLeftPoint.x},${aBoxThatNeedsABetterName.bottomLeftPoint.y} ${aBoxThatNeedsABetterName.bottomRightPoint.x},${aBoxThatNeedsABetterName.bottomRightPoint.y} 477.17598,917.4335 Z`
+      }
+    })
       setTimeout(() => {
         zoomToView("rect968");
       }, 500);
@@ -107,6 +131,9 @@ svg {
 #year2020 {
   border: 1px dotted pink;
   /* transform: translateX(-100%); */
+}
+#flag2020 {
+  opacity: 0.5;
 }
 .test-spot {
   width: 10px;
