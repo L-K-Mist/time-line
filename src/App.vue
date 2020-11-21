@@ -11,6 +11,12 @@
 import { defineComponent, onMounted, watchEffect } from "vue";
 import { gsap } from "gsap";
 
+import {
+  useMousePositionScreen,
+  useMousePositionSVG,
+  useWindowSize
+} from "@/composables/WebApi";
+
 import TimeLine from "@/components/TimeLine";
 import DevPanel from "@/components/DevPanel";
 
@@ -21,6 +27,8 @@ export default defineComponent({
     DevPanel
   },
   setup() {
+    const { windowWidth, windowHeight} = useWindowSize();
+
     function viewBoxString(frame) {
       return `${frame.x} ${frame.y} ${frame.width} ${frame.height}`;
     }
@@ -61,9 +69,7 @@ export default defineComponent({
 
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
-      // gsap.set("#year2020", {
-      //   transformOrigin: "top left"
-      // })
+
       setTimeout(() => {
         zoomToView("rect968");
       }, 500);
@@ -77,6 +83,10 @@ export default defineComponent({
 </script>
 
 <style>
+body {
+
+  overflow: hidden;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

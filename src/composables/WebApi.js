@@ -1,4 +1,4 @@
-import { ref, onMounted, onUnmounted, watchEffect } from "vue";
+import { ref, onMounted, onUnmounted, onBeforeMount, watchEffect } from "vue";
 import { throttle } from "lodash";
 import { angleBetweenPoints } from "@/helpers";
 
@@ -11,13 +11,13 @@ export function useMousePositionScreen() {
     y.value = event.clientY;
   }
 
-  const throttledHandler = throttle(handler, 200);
+  const onMouseMove = throttle(handler, 200);
   onMounted(() => {
-    window.addEventListener("mousemove", throttledHandler);
+    window.addEventListener("mousemove", onMouseMove);
   });
 
   onUnmounted(() => {
-    window.removeEventListener("mousemove", throttledHandler);
+    window.removeEventListener("mousemove", onMouseMove);
   });
 
   return {
@@ -50,14 +50,14 @@ export function useMousePositionSVG(svgId) {
     // console.log("handler -> svgY.value", svgY.value);
   }
 
-  const throttledHandler = throttle(handler, 200);
+  const onMouseMove = throttle(handler, 200);
   onMounted(() => {
     svg = document.getElementById(svgId);
-    svg.addEventListener("mousemove", throttledHandler);
+    svg.addEventListener("mousemove", onMouseMove);
   });
 
   onUnmounted(() => {
-    svg.removeEventListener("mousemove", throttledHandler);
+    svg.removeEventListener("mousemove", onMouseMove);
   });
 
   return {
@@ -65,6 +65,7 @@ export function useMousePositionSVG(svgId) {
     svgY
   };
 }
+
 
 function getCenterPoint(elementId) {
   const box = document.getElementById(elementId).getBBox();
@@ -93,4 +94,33 @@ export function useAngleBetweenMouseAndCenter(svgX, svgY, elementId) {
     });
   });
   return { angle };
+}
+
+
+export function useWindowSize() {
+  const windowWidth = ref(0);
+  const windowHeight = ref(0);
+
+  function setSize() {
+    windowWidth.value = window.width;
+    windowHeight.value = window.height;
+  }
+
+  const onResize = throttle(setSize, 200);
+  onBeforeMount(() => {
+    setSize();
+  });
+
+  onMounted(() => {
+    window.addEventListener("resize", onResize, { passive: true });
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener("resize", onResize);
+  });
+
+  return {
+    windowWidth,
+    windowHeight,
+  };
 }

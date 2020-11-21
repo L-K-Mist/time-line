@@ -6,6 +6,9 @@
       <p>
           SVG: x = {{ svgX }} y = {{ svgY }}
       </p>
+      <p>
+        Window: Width = {{windowWidth}} Height = {{windowHeight}}
+      </p>
   </div>
 </template>
 
@@ -15,11 +18,10 @@
 
 import { defineComponent, onMounted, watchEffect } from "vue";
 
-// TODO Next: bring in the useMousePosition compositions to better see what's going on.
-
 import {
   useMousePositionScreen,
-  useMousePositionSVG
+  useMousePositionSVG,
+  useWindowSize
 } from "@/composables/WebApi";
 
 export default defineComponent({
@@ -30,11 +32,14 @@ export default defineComponent({
   setup() {
     const { x: mouseX, y: mouseY } = useMousePositionScreen();
     const { svgX, svgY } = useMousePositionSVG("svg-timeline");
+    const { windowWidth, windowHeight} = useWindowSize();
     return {
-mouseX,
-mouseY,
-svgX,
-svgY
+      mouseX,
+      mouseY,
+      svgX,
+      svgY,
+      windowWidth,
+      windowHeight
     };
   },
 });
