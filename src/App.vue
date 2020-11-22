@@ -64,17 +64,22 @@ export default defineComponent({
         bottomLeftPoint:  screenToSVGPoint({ x: 0, y: 0 }, svg),
     }
       console.log("moveYearTopLeft -> yearBox", yearBox)
-      tl.to("#year2020", {
-        attr: { x: svgPosition.x , y: svgPosition.y + yearBox.height * 0.75 },
-      })
-      .to("#year2020", {
-        scale: 0.6
-      }, 0.1).to("#flag2020", {
+      tl
+      .to("#flag-pole2020", {
+        x: 14,
+        y: 180
+      }).to("#flag2020", {
         attr: {
           d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`
         },
-        duration: 5
-      });
+        duration: 1
+      }, "-=0.5")
+      .to("#year2020", {
+        attr: { x: svgPosition.x , y: svgPosition.y + yearBox.height * 0.75 },
+      })
+      .to("#year2020", {
+        scale: 0.4
+      }, "-=0.8");
       debugger;
     }
 
