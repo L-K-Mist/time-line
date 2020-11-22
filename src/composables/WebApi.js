@@ -102,8 +102,8 @@ export function useWindowSize() {
   const windowHeight = ref(0);
 
   function setSize() {
-    windowWidth.value = window.width;
-    windowHeight.value = window.height;
+    windowWidth.value = window.innerWidth;
+    windowHeight.value = window.innerHeight;
   }
 
   const onResize = throttle(setSize, 200);

@@ -49,7 +49,9 @@ export default defineComponent({
 .bottom-panel {
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px dotted grey;
     font-weight: bold;
     z-index: 10;
     background-color: rgba(210, 233, 240, 0.5);

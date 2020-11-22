@@ -7,7 +7,7 @@
 <script>
 /* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
-
+// TODO next: Must split flag into rect(path) and line 
 import { defineComponent, onMounted, watchEffect } from "vue";
 import { gsap } from "gsap";
 
@@ -57,41 +57,55 @@ export default defineComponent({
       const screenPosition = { x: 30, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
       const yearBox = document.getElementById("year2020").getBBox()
+      const screenBox = {
+        topLeftPoint: screenToSVGPoint({ x: 0, y: windowHeight.value }, svg), 
+        topRightPoint: screenToSVGPoint({ x: windowWidth.value, y: windowHeight.value }, svg),
+        bottomRightPoint: screenToSVGPoint({ x: windowWidth.value, y: 0 }, svg),
+        bottomLeftPoint:  screenToSVGPoint({ x: 0, y: 0 }, svg),
+    }
       console.log("moveYearTopLeft -> yearBox", yearBox)
       tl.to("#year2020", {
         attr: { x: svgPosition.x , y: svgPosition.y + yearBox.height * 0.75 },
       })
       .to("#year2020", {
         scale: 0.6
-      }, 0.1);
+      }, 0.1).to("#flag2020", {
+        attr: {
+          d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`
+        },
+        duration: 5
+      });
       debugger;
     }
 
     const aBoxThatNeedsABetterName = {
+      topLeftPoint: {
+        x: 261.158, 
+        y: 670.171
+      },
       topRightPoint: {
         x: 477.17598,
         y: 670.17077
       },
-      topLeftPoint: {
-        x: 261.158, 
-        y: 670.171
+      bottomRightPoint: {
+        x: 477.176,
+        y: 631.449
       },
       bottomLeftPoint: {
         x: 261.15788,
         y: 631.44916
       },
-      bottomRightPoint: {
-        x: 477.176,
-        y: 631.449
-      }
     }
 
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
+      const startingPath = `M ${aBoxThatNeedsABetterName.topLeftPoint.x},${aBoxThatNeedsABetterName.topLeftPoint.y} ${aBoxThatNeedsABetterName.topRightPoint.x},${aBoxThatNeedsABetterName.topRightPoint.y} ${aBoxThatNeedsABetterName.bottomRightPoint.x},${aBoxThatNeedsABetterName.bottomRightPoint.y} ${aBoxThatNeedsABetterName.bottomLeftPoint.x},${aBoxThatNeedsABetterName.bottomLeftPoint.y} Z`
+      console.log("setup -> startingPath", startingPath)
+      
     gsap.set("#flag2020", {
       attr: {
         // Conceptually deconstructed this path according to what each point means in terms of the goal:  Morphing to the edge of the screen.
-        d: `M ${aBoxThatNeedsABetterName.topRightPoint.x},${aBoxThatNeedsABetterName.topRightPoint.y} ${aBoxThatNeedsABetterName.topLeftPoint.x},${aBoxThatNeedsABetterName.topLeftPoint.y} ${aBoxThatNeedsABetterName.bottomLeftPoint.x},${aBoxThatNeedsABetterName.bottomLeftPoint.y} ${aBoxThatNeedsABetterName.bottomRightPoint.x},${aBoxThatNeedsABetterName.bottomRightPoint.y} 477.17598,917.4335 Z`
+        d: startingPath
       }
     })
       setTimeout(() => {

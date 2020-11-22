@@ -37,14 +37,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1055"
+     inkscape:window-width="1280"
+     inkscape:window-height="968"
      id="namedview212"
      showgrid="false"
-     inkscape:zoom="1.8667619"
-     inkscape:cx="358.34886"
-     inkscape:cy="180.08894"
-     inkscape:window-x="1280"
+     inkscape:zoom="0.66"
+     inkscape:cx="589.25799"
+     inkscape:cy="402.06324"
+     inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
@@ -453,10 +453,15 @@
     </text>
     <path
        style="opacity:1;fill:none;fill-opacity:1;stroke:#f23c8b;stroke-width:4.30200005;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 477.17598,670.17077 261.36092,670.171 261.15788,631.44916 477.175,631.449 477.17598,917.4335 Z"
+       d="M 261.158,670.171 477.17598,670.17077 477.176,631.449 261.15788,631.44916 Z"
        id="flag2020"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccc" />
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#f23c8b;stroke-width:4.28228521;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 477.175,631.42905 V 914.41388"
+       id="flag-pole2020"
+       inkscape:connector-curvature="0" />
   </g>
   <g
      inkscape:groupmode="layer"
