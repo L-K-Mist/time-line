@@ -65,17 +65,24 @@ export default defineComponent({
     }
       console.log("moveYearTopLeft -> yearBox", yearBox)
       tl
+      .to("#customer2020", {
+        attr: {x: screenBox.bottomRightPoint.x - 300, y: screenBox.bottomRightPoint.y + 100 }
+      })
       .to("#flag-pole2020", {
         x: 14,
         y: 180
-      }).to("#flag2020", {
+      })
+      .to("#flag2020", {
         attr: {
           d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`
         },
         duration: 1
       }, "-=0.5")
       .to("#year2020", {
-        attr: { x: svgPosition.x , y: svgPosition.y + yearBox.height * 0.75 },
+        attr: { 
+          x: svgPosition.x , 
+          y: svgPosition.y + yearBox.height * 0.75 
+        },
       })
       .to("#year2020", {
         scale: 0.4
@@ -104,12 +111,12 @@ export default defineComponent({
 
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
+      // Conceptually deconstructed this path according to what each point means in terms of the goal:  Morphing to the edge of the screen.
       const startingPath = `M ${aBoxThatNeedsABetterName.topLeftPoint.x},${aBoxThatNeedsABetterName.topLeftPoint.y} ${aBoxThatNeedsABetterName.topRightPoint.x},${aBoxThatNeedsABetterName.topRightPoint.y} ${aBoxThatNeedsABetterName.bottomRightPoint.x},${aBoxThatNeedsABetterName.bottomRightPoint.y} ${aBoxThatNeedsABetterName.bottomLeftPoint.x},${aBoxThatNeedsABetterName.bottomLeftPoint.y} Z`
       console.log("setup -> startingPath", startingPath)
       
     gsap.set("#flag2020", {
       attr: {
-        // Conceptually deconstructed this path according to what each point means in terms of the goal:  Morphing to the edge of the screen.
         d: startingPath
       }
     })
