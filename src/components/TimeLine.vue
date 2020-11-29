@@ -41,9 +41,9 @@
      inkscape:window-height="1024"
      id="namedview212"
      showgrid="false"
-     inkscape:zoom="1.32"
-     inkscape:cx="201.63028"
-     inkscape:cy="240.99399"
+     inkscape:zoom="0.93338095"
+     inkscape:cx="462.77986"
+     inkscape:cy="572.95524"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -333,14 +333,21 @@
        y="691.90125"><tspan
          style="word-spacing:1.49388px;stroke-width:2.1512"
          id="tspan881">My Retirement Picture</tspan></text>
-    <text
-       style="font-weight:bold;font-size:37.6675px;font-family:Roboto;-inkscape-font-specification:Roboto-Bold;fill:#f23c8b;stroke-width:2.1512"
-       font-weight="bold"
-       font-size="17.51"
-       class="year"
-       id="year2020"
-       x="262.00574"
-       y="618.5188">2020</text>
+    <g
+       id="year2020Scale"
+       inkscape:label="#year2020Scale"
+
+       >
+      <text
+         style="font-weight:bold;font-size:37.6675px;font-family:Roboto;-inkscape-font-specification:Roboto-Bold;fill:#f23c8b;stroke-width:2.1512"
+         font-weight="bold"
+         font-size="17.51"
+         class="year"
+         id="year2020"
+         x="262.00574"
+         y="618.5188"
+         inkscape:label="#year2020">2020</text>
+    </g>
     <path
        d="M 94.69484,913.97337 73.092441,877.75811 94.69484,841.54286 H 137.89762 L 159.50002,877.75811 137.89762,913.97337 Z"
        id="path184"

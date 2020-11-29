@@ -54,7 +54,6 @@ export default defineComponent({
     }
 
     function moveYearTopLeft() {
-      gsap.set("#year2020",{ transformOrigin: "top right"})
       const screenPosition = { x: 30, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
       console.log("moveYearTopLeft -> svgPosition", svgPosition)
@@ -65,7 +64,8 @@ export default defineComponent({
         bottomRightPoint: screenToSVGPoint({ x: windowWidth.value, y: 0 }, svg),
         bottomLeftPoint:  screenToSVGPoint({ x: 0, y: 0 }, svg),
     }
-      console.log("moveYearTopLeft -> yearBox", yearBox)
+      console.log("moveYearTopLeft -> yearBox", yearBox)    
+
       tl
       .to("#customer2020", {
         attr: {x: screenBox.bottomRightPoint.x - 300, y: screenBox.bottomRightPoint.y + 100 }
@@ -81,12 +81,18 @@ export default defineComponent({
         duration: 1
       }, "-=0.5")
       .to("#year2020", {
-        transformOrigin: "top right",
         attr: { 
           x: svgPosition.x,
-          y: svgPosition.y
+          y: svgPosition.y + yearBox.height,
+          // transform: "scale(0.5)"
          
         },
+      })
+      .to("#year2020Scale", {
+        scale: 0.8,
+        // attr: {
+        //   transform: "scaleX(0.5)"
+        // }
       })
       .to("#test-pixel", {
         attr: {
@@ -94,10 +100,6 @@ export default defineComponent({
           
         }
       })
-      // .to("#year2020", {
-      //   scale: 0.4
-      // }, "-=0.8");
-      debugger;
     }
 
     const aBoxThatNeedsABetterName = {
