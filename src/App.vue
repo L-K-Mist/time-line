@@ -54,8 +54,10 @@ export default defineComponent({
     }
 
     function moveYearTopLeft() {
+      gsap.set("#year2020",{ transformOrigin: "top right"})
       const screenPosition = { x: 30, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
+      console.log("moveYearTopLeft -> svgPosition", svgPosition)
       const yearBox = document.getElementById("year2020").getBBox()
       const screenBox = {
         topLeftPoint: screenToSVGPoint({ x: 0, y: windowHeight.value }, svg), 
@@ -79,14 +81,22 @@ export default defineComponent({
         duration: 1
       }, "-=0.5")
       .to("#year2020", {
+        transformOrigin: "top right",
         attr: { 
-          x: svgPosition.x , 
-          y: svgPosition.y + yearBox.height * 0.75 
+          x: svgPosition.x,
+          y: svgPosition.y
+         
         },
       })
-      .to("#year2020", {
-        scale: 0.4
-      }, "-=0.8");
+      .to("#test-pixel", {
+        attr: {
+          x: svgPosition.x,
+          
+        }
+      })
+      // .to("#year2020", {
+      //   scale: 0.4
+      // }, "-=0.8");
       debugger;
     }
 
@@ -120,9 +130,6 @@ export default defineComponent({
         d: startingPath
       }
     })
-      setTimeout(() => {
-        zoomToView("rect968");
-      }, 500);
       // test zoom
     });
     return {

@@ -69,7 +69,6 @@ export function useMousePositionSVG(svgId) {
 
 function getCenterPoint(elementId) {
   const box = document.getElementById(elementId).getBBox();
-  console.log("getCenterPoint -> box", box);
   return {
     x: box.x + box.width / 2,
     y: box.y + box.height / 2
