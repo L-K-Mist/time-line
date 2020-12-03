@@ -1,6 +1,6 @@
 <template>
   <dev-panel></dev-panel>
-  <TimeLine @click="moveYearTopLeft" />
+  <TimeLine @click="zoomTo2020" />
   <div class="test-spot"></div>
 </template>
 
@@ -11,6 +11,7 @@
 import { defineComponent, onMounted, watchEffect } from "vue";
 import { gsap } from "gsap";
 
+import { screenToSVGPoint } from "@/helpers"
 import {
   useMousePositionScreen,
   useMousePositionSVG,
@@ -33,41 +34,24 @@ export default defineComponent({
       return `${frame.x} ${frame.y} ${frame.width} ${frame.height}`;
     }
     let svg;
-    let tl = gsap.timeline(); //create the timeline
-    function zoomToView(elementId) {
-      const element = document.getElementById(elementId);
-      const box = element.getBBox();
-      return gsap.to(svg, {
-        duration: 1,
-        attr: { viewBox: viewBoxString(box) },
-      });
-    }
+    let layoutTimeLine = gsap.timeline(); //create the timeline
 
-    function screenToSVGPoint(screenPoint, svgElement) {
-      const point = svgElement.createSVGPoint();
-      point.x = screenPoint.x;
-      point.y = screenPoint.y;
-      const svgPoint = point.matrixTransform(
-        svgElement.getScreenCTM().inverse()
-      );
-      return svgPoint;
-    }
+    function arrangeElements2020() {
+    console.log("arrangeElements2020 TRIGGERED")
 
-    function moveYearTopLeft() {
       const screenPosition = { x: 30, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
-      console.log("moveYearTopLeft -> svgPosition", svgPosition)
+
       const yearBox = document.getElementById("year2020").getBBox()
       const screenBox = {
         topLeftPoint: screenToSVGPoint({ x: 0, y: windowHeight.value }, svg), 
         topRightPoint: screenToSVGPoint({ x: windowWidth.value, y: windowHeight.value }, svg),
         bottomRightPoint: screenToSVGPoint({ x: windowWidth.value, y: 0 }, svg),
         bottomLeftPoint:  screenToSVGPoint({ x: 0, y: 0 }, svg),
-    }
-      console.log("moveYearTopLeft -> yearBox", yearBox)    
+      }
 
-      tl
-      .to("#customer2020", {
+
+      layoutTimeLine.to("#customer2020", {
         attr: {x: screenBox.bottomRightPoint.x - 300, y: screenBox.bottomRightPoint.y + 100 }
       })
       .to("#flag-pole2020", {
@@ -79,20 +63,15 @@ export default defineComponent({
           d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`
         },
         duration: 1
-      }, "-=0.5")
+      })
       .to("#year2020", {
         attr: { 
           x: svgPosition.x,
-          y: svgPosition.y + yearBox.height,
-          // transform: "scale(0.5)"
-         
+          y: svgPosition.y + yearBox.height * 0.8,
         },
       })
       .to("#year2020Scale", {
-        scale: 0.8,
-        // attr: {
-        //   transform: "scaleX(0.5)"
-        // }
+        scale: 0.5,
       })
       .to("#test-pixel", {
         attr: {
@@ -102,40 +81,38 @@ export default defineComponent({
       })
     }
 
-    const aBoxThatNeedsABetterName = {
-      topLeftPoint: {
-        x: 261.158, 
-        y: 670.171
-      },
-      topRightPoint: {
-        x: 477.17598,
-        y: 670.17077
-      },
-      bottomRightPoint: {
-        x: 477.176,
-        y: 631.449
-      },
-      bottomLeftPoint: {
-        x: 261.15788,
-        y: 631.44916
-      },
+
+
+    // function zoomToView(elementId) {
+      //   const element = document.getElementById(elementId);
+    //   const box = element.getBBox();
+    //   return gsap.to(svg, {
+      //     duration: 1,
+    //     attr: { viewBox: viewBoxString(box) },
+    //   });
+    // }
+
+
+    function zoomTo2020() {
+      // This and arrangeElements needed to operate from two different timelines, because in between we need to convert the screen co-ords into svg co-ords.
+      // eg Because we're moving the year to the top left corner of the user's screen; we need to first zoom in finished so that the correct svg point to move the heading to, can be "snap-shotted".
+      const element = document.getElementById("rect968");
+      const zoomBox = element.getBBox();
+
+      let zoomTimeLine = gsap.timeline();
+      zoomTimeLine.to(svg, {
+        duration: 1,
+        attr: { viewBox: viewBoxString(zoomBox) },
+      }).then(arrangeElements2020)
     }
+
+
 
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
-      // Conceptually deconstructed this path according to what each point means in terms of the goal:  Morphing to the edge of the screen.
-      const startingPath = `M ${aBoxThatNeedsABetterName.topLeftPoint.x},${aBoxThatNeedsABetterName.topLeftPoint.y} ${aBoxThatNeedsABetterName.topRightPoint.x},${aBoxThatNeedsABetterName.topRightPoint.y} ${aBoxThatNeedsABetterName.bottomRightPoint.x},${aBoxThatNeedsABetterName.bottomRightPoint.y} ${aBoxThatNeedsABetterName.bottomLeftPoint.x},${aBoxThatNeedsABetterName.bottomLeftPoint.y} Z`
-      console.log("setup -> startingPath", startingPath)
-      
-    gsap.set("#flag2020", {
-      attr: {
-        d: startingPath
-      }
-    })
-      // test zoom
     });
     return {
-      moveYearTopLeft,
+      zoomTo2020,
     };
   },
 });
