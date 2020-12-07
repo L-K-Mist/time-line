@@ -199,15 +199,9 @@
          style="stroke-width:2.01196">LOREM IPSUM</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:21.5121px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#242a4c;fill-opacity:1;stroke:none;stroke-width:1.6134"
-       x="269.00925"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.6993px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0.467782px;fill:#242a4c;stroke-width:1.6134"       x="269.00925"
        y="657.25763"
-       id="customer2020"><tspan
-         sodipodi:role="line"
-         id="tspan1027"
-         x="269.00925"
-         y="657.25763"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.6993px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0.467782px;fill:#242a4c;stroke-width:1.6134">ALEXANDER FORBES</tspan></text>
+       id="customer2020">ALEXANDER FORBES</text>
     <path
        d="M 283.68816,491.46208 V 328.49344 H 98.587979 V 364.70869 H 283.68816"
        stroke-miterlimit="10"
@@ -421,6 +415,7 @@
        style="opacity:1;fill:none;fill-opacity:1;stroke:#f23c8b;stroke-width:4.30200005;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M 261.158,670.171 477.17598,670.17077 477.176,631.449 261.15788,631.44916 Z"
        id="flag2020"
+       stroke-width="8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path

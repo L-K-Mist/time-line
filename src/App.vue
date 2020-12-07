@@ -34,15 +34,15 @@ export default defineComponent({
       return `${frame.x} ${frame.y} ${frame.width} ${frame.height}`;
     }
     let svg;
-    let layoutTimeLine = gsap.timeline(); //create the timeline
+    
 
-    function arrangeElements2020() {
-    console.log("arrangeElements2020 TRIGGERED")
+    function arrangeElements2020(year) {
+      let layoutTimeLine = gsap.timeline(); //create the timeline
 
       const screenPosition = { x: 30, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
 
-      const yearBox = document.getElementById("year2020").getBBox()
+      const yearBox = document.getElementById(`year${year}`).getBBox()
       const screenBox = {
         topLeftPoint: screenToSVGPoint({ x: 0, y: windowHeight.value }, svg), 
         topRightPoint: screenToSVGPoint({ x: windowWidth.value, y: windowHeight.value }, svg),
@@ -50,28 +50,28 @@ export default defineComponent({
         bottomLeftPoint:  screenToSVGPoint({ x: 0, y: 0 }, svg),
       }
 
-
-      layoutTimeLine.to("#customer2020", {
-        attr: {x: screenBox.bottomRightPoint.x - 300, y: screenBox.bottomRightPoint.y + 100 }
-      })
-      .to("#flag-pole2020", {
-        x: 14,
-        y: 180
-      })
-      .to("#flag2020", {
+      layoutTimeLine
+      .to(`#flag${year}`, {
         attr: {
-          d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`
+          d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`,    
+          ["stroke-width"]: 10,
         },
+        opacity: 0.7,
         duration: 1
-      })
-      .to("#year2020", {
+      }, 1)
+      .to(`#flag-pole${year}`, {
+        x: 100,
+        y: 80,
+        opacity: 0
+      }, 1)
+      .to(`#year${year}`, {
         attr: { 
           x: svgPosition.x,
           y: svgPosition.y + yearBox.height * 0.8,
         },
       })
-      .to("#year2020Scale", {
-        scale: 0.5,
+      .to(`#year${year}Scale`, {
+        scale: 0.4,
       })
       .to("#test-pixel", {
         attr: {
@@ -83,30 +83,23 @@ export default defineComponent({
 
 
 
-    // function zoomToView(elementId) {
-      //   const element = document.getElementById(elementId);
-    //   const box = element.getBBox();
-    //   return gsap.to(svg, {
-      //     duration: 1,
-    //     attr: { viewBox: viewBoxString(box) },
-    //   });
-    // }
-
-
-    function zoomTo2020() {
-      // This and arrangeElements needed to operate from two different timelines, because in between we need to convert the screen co-ords into svg co-ords.
-      // eg Because we're moving the year to the top left corner of the user's screen; we need to first zoom in finished so that the correct svg point to move the heading to, can be "snap-shotted".
-      const element = document.getElementById("rect968");
-      const zoomBox = element.getBBox();
-
-      let zoomTimeLine = gsap.timeline();
-      zoomTimeLine.to(svg, {
-        duration: 1,
-        attr: { viewBox: viewBoxString(zoomBox) },
-      }).then(arrangeElements2020)
+    function zoomToView(elementId) {
+        const element = document.getElementById(elementId);
+      const box = element.getBBox();
+      return gsap.to(svg, {
+          duration: 1,
+        attr: { viewBox: viewBoxString(box) },
+      });
     }
 
 
+    async function zoomTo2020() {
+      // This and arrangeElements needed to operate from two different timelines, because in between we need to convert the screen co-ords into svg co-ords.
+      // eg Because we're moving the year to the top left corner of the user's screen; we need to first zoom in finished so that the correct svg point to move the heading to, can be "snap-shotted".
+      const element = document.getElementById("rect968");
+      await zoomToView("rect968")
+      arrangeElements2020("2020")
+    }
 
     onMounted(() => {
       svg = document.getElementById("svg-timeline");
