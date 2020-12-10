@@ -43,6 +43,7 @@ export default defineComponent({
       const svgPosition = screenToSVGPoint(screenPosition, svg);
 
       const yearBox = document.getElementById(`year${year}`).getBBox()
+      console.log("🚀 ~ file: App.vue ~ line 46 ~ arrangeElements2020 ~ yearBox", yearBox)
       const screenBox = {
         topLeftPoint: screenToSVGPoint({ x: 0, y: windowHeight.value }, svg), 
         topRightPoint: screenToSVGPoint({ x: windowWidth.value, y: windowHeight.value }, svg),
@@ -79,9 +80,29 @@ export default defineComponent({
           
         }
       })
+      .then(() => {
+        let smallerYearBox = document.getElementById(`year${year}Scale`).getBBox()
+        console.log("🚀 ~ file: App.vue ~ line 84 ~ .then ~ smallerYearBox", smallerYearBox)
+        layoutTimeLine.to(`#customer${year}`, {
+          attr: {
+            x: svgPosition.x + 4 + yearBox.width * 0.4 , 
+            y: svgPosition.y + 6,
+          }
+        })
+        .to(`#customer${year}Scale`, {
+          scale: 0.84
+        }, 1)
+        .to(`#projectName${year}`, {
+          attr: {
+            x: svgPosition.x , 
+            y: svgPosition.y + 20 + yearBox.height * 0.4,
+          }
+        })
+        .to(`#projectName${year}Scale`, {
+          scale: 1.7
+        })
+      })
     }
-
-
 
     function zoomToView(elementId) {
         const element = document.getElementById(elementId);
@@ -91,7 +112,6 @@ export default defineComponent({
         attr: { viewBox: viewBoxString(box) },
       });
     }
-
 
     async function zoomTo2020() {
       // This and arrangeElements needed to operate from two different timelines, because in between we need to convert the screen co-ords into svg co-ords.
