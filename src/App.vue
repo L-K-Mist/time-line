@@ -2,6 +2,7 @@
   <dev-panel></dev-panel>
   <TimeLine @click="zoomTo2020" />
   <div class="test-spot"></div>
+  <div class="video-selection"></div>
 </template>
 
 <script>
@@ -37,9 +38,8 @@ export default defineComponent({
     
 
     function arrangeElements2020(year) {
-      let layoutTimeLine = gsap.timeline(); //create the timeline
-
-      const screenPosition = { x: 30, y: 30 };
+      
+      const screenPosition = { x: 60, y: 30 };
       const svgPosition = screenToSVGPoint(screenPosition, svg);
 
       const yearBox = document.getElementById(`year${year}`).getBBox()
@@ -51,57 +51,54 @@ export default defineComponent({
         bottomLeftPoint:  screenToSVGPoint({ x: 0, y: 0 }, svg),
       }
 
+      let layoutTimeLine = gsap.timeline({ defaults: {duration: 0.5} } ); //create the timeline
       layoutTimeLine
+        .to(`#flag-pole${year}`, {
+          x: 100,
+          y: 80,
+          opacity: 0
+        })
       .to(`#flag${year}`, {
         attr: {
           d: `M ${screenBox.topLeftPoint.x},${screenBox.topLeftPoint.y} ${screenBox.topRightPoint.x},${screenBox.topRightPoint.y} ${screenBox.bottomRightPoint.x},${screenBox.bottomRightPoint.y} ${screenBox.bottomLeftPoint.x},${screenBox.bottomLeftPoint.y} Z`,    
           ["stroke-width"]: 10,
         },
         opacity: 0.7,
-        duration: 1
-      }, 1)
-      .to(`#flag-pole${year}`, {
-        x: 100,
-        y: 80,
-        opacity: 0
-      }, 1)
+      }, 0.1)
       .to(`#year${year}`, {
         attr: { 
-          x: svgPosition.x,
-          y: svgPosition.y + yearBox.height * 0.8,
+          x: svgPosition.x - 137,
+          y: svgPosition.y + 39,
         },
-      })
-      .to(`#year${year}Scale`, {
-        scale: 0.4,
-      })
+      }, 1.2)
+
+        .to(`#year${year}Scale`, {
+          scale: 0.4,
+        }, 1.2)
       .to("#test-pixel", {
         attr: {
           x: svgPosition.x,
-          
         }
       })
-      .then(() => {
-        let smallerYearBox = document.getElementById(`year${year}Scale`).getBBox()
-        console.log("🚀 ~ file: App.vue ~ line 84 ~ .then ~ smallerYearBox", smallerYearBox)
-        layoutTimeLine.to(`#customer${year}`, {
-          attr: {
-            x: svgPosition.x + 4 + yearBox.width * 0.4 , 
-            y: svgPosition.y + 6,
+
+      .to(`#customer${year}`, {
+        attr: {
+            x: svgPosition.x + 24 , 
+            y: svgPosition.y + 6
           }
-        })
-        .to(`#customer${year}Scale`, {
-          scale: 0.84
-        }, 1)
-        .to(`#projectName${year}`, {
-          attr: {
-            x: svgPosition.x , 
-            y: svgPosition.y + 20 + yearBox.height * 0.4,
-          }
-        })
-        .to(`#projectName${year}Scale`, {
-          scale: 1.7
-        })
-      })
+        }, 1.6)
+      .to(`#customer${year}Scale`, {
+        scale: 0.84
+      }, 1.6)
+      .to(`#projectName${year}`, {
+        attr: {
+          x: svgPosition.x + 40 , 
+          y: svgPosition.y + 63,
+        }
+      }, 1.2)
+      .to(`#projectName${year}Scale`, {
+        scale: 1.7
+      }, 1.2)
     }
 
     function zoomToView(elementId) {
@@ -167,5 +164,13 @@ svg {
   top: 30px;
   left: 30px;
   background-color: darkblue;
+}
+
+.video-selection{
+   border: 2px dotted green;
+   position: absolute;
+   top: 25%;
+   width: 100%;
+   height: 75%;
 }
 </style>

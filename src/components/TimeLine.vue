@@ -417,10 +417,10 @@
          style="word-spacing:1.49388px;stroke-width:2.1512"
          id="tspan928" /></text>
     <path
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#f23c8b;stroke-width:4.30200005;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#f23c8b;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M 261.158,670.171 477.17598,670.17077 477.176,631.449 261.15788,631.44916 Z"
        id="flag2020"
-       stroke-width="8"
+       stroke-width="4.3"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
