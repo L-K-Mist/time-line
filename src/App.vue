@@ -74,6 +74,7 @@ export default defineComponent({
 
         .to(`#year${year}Scale`, {
           scale: 0.4,
+          // transformOrigin: "top left"
         }, 1.2)
       .to("#test-pixel", {
         attr: {
